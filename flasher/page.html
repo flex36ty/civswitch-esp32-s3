@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CivSwitch Flasher</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#101822;color:#edf5ff;font:17px/1.55 system-ui}main{max-width:640px;margin:6vh auto;padding:30px}small{color:#8ce2c9}h1{line-height:1.1}button,select{font:inherit;padding:10px;border-radius:6px}button{background:#9aefd4;margin:12px 0;cursor:pointer}button:disabled{opacity:.5}progress,select{width:100%}pre{white-space:pre-wrap;max-height:14em;overflow:auto}#status{min-height:2em}</style>
+<main><small>CivSwitch · firmware v1.1.0</small><h1>Flash your ESP32-S3</h1><p>For the N16R8 board. Connect its <b>COM</b> port to your computer.</p>
+<p><a href="http://127.0.0.1:8768/serial-port" target="_blank" rel="noopener" style="display:inline-block;background:#34485b;color:white;padding:8px 14px;border-radius:6px">Free COM port</a></p><p>In the controller tab, confirm release, then return here. If the controller is offline, continue to port selection. For an older controller or another serial monitor, close it first.</p><label for="mode">Installation</label><select id="mode"><option value="full">Full install · new board or other firmware</option><option value="app">Update · existing CivSwitch N16R8 layout</option></select>
+<p id="effect"></p><button id="install">Choose port &amp; install</button><progress id="progress" max="100" value="0"></progress><p id="status" role="status">Ready.</p><details><summary>Connection log</summary><pre id="log"></pre></details>
+<p>If the board cannot connect, hold BOOT, tap RST, release BOOT, then retry.</p></main><script>/*BUNDLE*/</script></html>
+
+

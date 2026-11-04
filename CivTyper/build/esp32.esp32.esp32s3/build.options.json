@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "..\\..,..\\..,..\\..,..\\..,..\\..",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "esp32:esp32:esp32s3:USBMode=default,CDCOnBoot=default,FlashSize=16M,PSRAM=opi,PartitionScheme=app3M_fat9M_16MB",
+  "hardwareFolders": "C:\\projects\\switch2\\hid-typing-test\\esp32-paste\\tools\\data\\packages\\esp32\\hardware\\esp32\\3.3.8,C:\\projects\\switch2\\hid-typing-test\\esp32-paste\\tools\\data\\packages\\esp32\\hardware\\esp32\\3.3.8",
+  "otherLibrariesFolders": "C:\\projects\\switch2\\hid-typing-test\\esp32-paste\\tools\\user\\libraries",
+  "sketchLocation": "C:\\projects\\switch2\\civswitch-esp32\\CivTyper"
+}

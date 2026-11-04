@@ -1,8 +1,12 @@
+## Version 1.1.0
+
+Adds automatic Caps Lock correction and a Send two-message test button. BOOT starts the full sequence. The test can display 63/64 at completion because its counter is zero-based.
+
 # CivSwitch ESP32-S3
 
 ## EZ Flasher
 
-**[Download the all-in-one EZ Flasher ZIP](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/CivSwitch-Flasher-v1.0.0.zip)** for Windows, macOS or Linux. Both firmware images and the optional controller are included.
+**[Download the all-in-one EZ Flasher ZIP](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.1.0/CivSwitch-Flasher-v1.1.0.zip)** for Windows, macOS or Linux. Both firmware images and the optional controller are included.
 
 1. **Open the flasher.** Extract the ZIP, then open `CivSwitch-Flasher.html` in desktop Chrome or Edge.
 2. **Connect the board.** Check that it is an ESP32-S3 **N16R8**. Plug its **COM** connector into your computer with a USB data cable.
@@ -19,7 +23,7 @@ An unofficial ESP32-S3 (port of [Gezine's CivSwitch](https://github.com/Gezine/C
 Buy this board if you need to get one
 https://www.amazon.com/dp/B0F5QCK6X5?ref=ppx_yo2ov_dt_b_fed_asin_title
 
-This repository distributes documentation and compiled firmware only. Download the `.bin` files from [Releases](https://github.com/flex36ty/civswitch-esp32-s3/releases/latest). GitHub's automatically generated “Source code” archives contain repository documentation, not the firmware project.
+This repository includes firmware, controller and flasher source alongside compiled releases. Download the `.bin` files from [Releases](https://github.com/flex36ty/civswitch-esp32-s3/releases/latest). GitHub's automatically generated “Source code” archives contain repository documentation, not the firmware project.
 
 ## Features
 
@@ -43,14 +47,14 @@ This repository distributes documentation and compiled firmware only. Download t
 
 | File | Flash address | Use |
 | --- | --- | --- |
-| `civswitch-esp32-s3-n16r8-v1.0.0-full.bin` | `0x0` | First installation or replacing another firmware. Includes bootloader, partitions and application. Replaces the board's flash contents. |
-| `civswitch-esp32-s3-n16r8-v1.0.0-app.bin` | `0x10000` | Updating a board already configured with this project's 16 MB / 3 MB application partition layout. |
+| `civswitch-esp32-s3-n16r8-v1.1.0-full.bin` | `0x0` | First installation or replacing another firmware. Includes bootloader, partitions and application. Replaces the board's flash contents. |
+| `civswitch-esp32-s3-n16r8-v1.1.0-app.bin` | `0x10000` | Updating a board already configured with this project's 16 MB / 3 MB application partition layout. |
 
 Do not flash the application-only file at `0x0`. Neither file is a drag-and-drop UF2.
 
 ## Control the board from your browser
 
-After flashing, connect **COM → computer** and **USB → Switch dock** with data cables. Download [the compiled controller](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/civswitch-controller-cpython313.pyc) and install **CPython 3.13**. Open a terminal in the download folder. This controller build requires that Python minor version.
+After flashing, connect **COM → computer** and **USB → Switch dock** with data cables. Download [the compiled controller](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.1.0/civswitch-controller-cpython313.pyc) and install **CPython 3.13**. Open a terminal in the download folder. This controller build requires that Python minor version.
 
 **Windows PowerShell**
 
@@ -78,7 +82,7 @@ The controller automatically selects a single recognized serial adapter. If it a
 
 No Python installation is needed. Use desktop Chrome or Edge and a USB data cable.
 
-1. Download **one `.bin` file** from the [release assets](https://github.com/flex36ty/civswitch-esp32-s3/releases/tag/v1.0.0). For a new board, choose the file ending in `-full.bin`.
+1. Download **one `.bin` file** from the [release assets](https://github.com/flex36ty/civswitch-esp32-s3/releases/tag/v1.1.0). For a new board, choose the file ending in `-full.bin`.
 2. Plug the board's **COM** connector into the computer. Stop any local typing server or serial monitor using that port; closing its browser tab alone does not release the port.
 3. Open [Espressif's browser flasher](https://espressif.github.io/esptool-js/). In **Program**, connect and select the board's USB serial port. Leave **WebUSB (CH340)** unchecked for this board's COM connector.
 4. In the **Flash Address / File** row, select your downloaded file. Enter **`0x0` for `-full.bin`**, or **`0x10000` for `-app.bin`** on a board with the matching layout. Use only one row. Leave **Erase all** unchecked.
@@ -93,13 +97,13 @@ Install Python 3, download the full binary, and open PowerShell in its download 
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install "esptool==4.12.0"
 .\.venv\Scripts\python.exe -m serial.tools.list_ports
-.\.venv\Scripts\python.exe -m esptool --chip esp32s3 --port COM5 --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.0.0-full.bin
+.\.venv\Scripts\python.exe -m esptool --chip esp32s3 --port COM5 --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.1.0-full.bin
 ```
 
 Replace `COM5` with the board's port. For an application-only update, replace the final address and filename with:
 
 ```text
-0x10000 civswitch-esp32-s3-n16r8-v1.0.0-app.bin
+0x10000 civswitch-esp32-s3-n16r8-v1.1.0-app.bin
 ```
 
 ## Flash from macOS or Linux Terminal
@@ -115,13 +119,13 @@ python3 -m venv .venv
 On Linux, replace `/dev/ttyUSB0` with the listed board port:
 
 ```sh
-.venv/bin/python -m esptool --chip esp32s3 --port /dev/ttyUSB0 --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.0.0-full.bin
+.venv/bin/python -m esptool --chip esp32s3 --port /dev/ttyUSB0 --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.1.0-full.bin
 ```
 
 On macOS, replace `/dev/cu.usbserial-XXXX` with the listed board port:
 
 ```sh
-.venv/bin/python -m esptool --chip esp32s3 --port /dev/cu.usbserial-XXXX --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.0.0-full.bin
+.venv/bin/python -m esptool --chip esp32s3 --port /dev/cu.usbserial-XXXX --baud 921600 --before default_reset --after hard_reset write_flash 0x0 civswitch-esp32-s3-n16r8-v1.1.0-full.bin
 ```
 
 For an application-only update, use `0x10000` and the `-app.bin` filename instead. On Ubuntu, install `python3-venv` if needed. For serial permission errors on Ubuntu/Debian, run `sudo usermod -aG dialout "$USER"`, then log out and back in. A CH343 driver may be needed if the COM connector does not appear.
@@ -160,3 +164,8 @@ The two-message test produced exact text on the user's console after the USB rep
 - **[flex36ty](https://github.com/flex36ty)** — ESP32-S3 adaptation, testing and release distribution, developed with OpenAI Codex assistance.
 
 See `THIRD-PARTY-NOTICES.txt` for the retained CivSwitch and TinyUSB MIT notices. This port is not an official release from the upstream authors, Nintendo or Firaxis.
+
+## Building
+
+Use Arduino CLI with Arduino-ESP32 3.3.8. Board FQBN is esp32:esp32:esp32s3:USBMode=default,CDCOnBoot=default,FlashSize=16M,PSRAM=opi,PartitionScheme=app3M_fat9M_16MB. Compile CivTyper with output directory build. To regenerate messages use tools/payload_to_macro.py. Run controller.py with Python and pyserial 3.5. Rebuild the flasher using npm ci and node build.cjs in flasher after placing the versioned binaries and SHA256SUMS.txt in release-assets.
+
