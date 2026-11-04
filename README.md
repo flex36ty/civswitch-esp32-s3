@@ -12,7 +12,7 @@ This repository distributes documentation and compiled firmware only. Download t
 - Hold BOOT for 2 seconds to start a 10-second countdown, then release.
 - Press BOOT during the countdown or typing to stop and release controls.
 - USB disconnection stops an active run. Power-on and RST do not automatically start typing.
-- The firmware also supports the existing optional UART/web controller; that controller application is not included in this binary-only release.
+- Start, stop and monitor the board from a local browser using the compiled controller included in the release.
 
 ## Hardware and game requirements
 
@@ -30,6 +30,32 @@ This repository distributes documentation and compiled firmware only. Download t
 | `civswitch-esp32-s3-n16r8-v1.0.0-app.bin` | `0x10000` | Updating a board already configured with this project's 16 MB / 3 MB application partition layout. |
 
 Do not flash the application-only file at `0x0`. Neither file is a drag-and-drop UF2.
+
+## Control the board from your browser
+
+After flashing, connect **COM → computer** and **USB → Switch dock** with data cables. Download [the compiled controller](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/civswitch-controller-cpython313.pyc) and install **CPython 3.13**. Open a terminal in the download folder. This controller build requires that Python minor version.
+
+**Windows PowerShell**
+
+```powershell
+py -3.13 -m venv .civswitch
+.\.civswitch\Scripts\python.exe -m pip install pyserial==3.5
+.\.civswitch\Scripts\python.exe civswitch-controller-cpython313.pyc
+```
+
+**macOS or Linux Terminal**
+
+```sh
+python3.13 -m venv .civswitch
+.civswitch/bin/python -m pip install pyserial==3.5
+.civswitch/bin/python civswitch-controller-cpython313.pyc
+```
+
+1. Leave the terminal running and open [the local control page](http://127.0.0.1:8768/) on that same computer. On subsequent launches, run only the last command.
+2. Check that the page says **USB connected**. Open and focus the game's lobby chat, then click **Start CivSwitch macro**. Typing starts after 10 seconds.
+3. Watch the step counter or click **Stop / release controls** to cancel. The counter tracks keyboard and controller steps across the 87 messages. When finished, press **Ctrl+C** in the terminal to close the server and free the serial port.
+
+The controller automatically selects a single recognized serial adapter. If it asks for a port, append `--port COM5`, `--port /dev/ttyUSB0`, or `--port /dev/cu.usbserial-XXXX` to the last command, substituting your board's port. If the port is busy, disconnect any serial flasher or stop the other controller process.
 
 ## Flash from a web browser (Windows, macOS or Linux)
 
