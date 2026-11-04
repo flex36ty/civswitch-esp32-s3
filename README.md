@@ -1,5 +1,7 @@
 # CivSwitch ESP32-S3
 
+**Easy install for Windows, macOS and Linux:** download the [CivSwitch Flasher ZIP](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/CivSwitch-Flasher-v1.0.0.zip), extract it, and open `CivSwitch-Flasher.html` in desktop Chrome or Edge. Connect the board’s COM port and stop any serial controller using it. Choose **Full install** for a new board or **Update** for an existing matching CivSwitch installation, then click **Choose port & install**. Wait for verification before unplugging. The app includes both firmware images, works offline and selects the address automatically. Confirm your board is marked N16R8; the installer checks ESP32-S3 and 16 MB flash but cannot verify board wiring.
+
 An unofficial ESP32-S3 (port of [Gezine's CivSwitch](https://github.com/Gezine/CivSwitch) USB controller-and-keyboard automation. The firmware stores the 87-message CivSwitch session-loader payload and types it into Civilization VII's lobby chat. Once flashed, it can run from the board's BOOT button without a computer.
 
 Buy this board if you need to get one
