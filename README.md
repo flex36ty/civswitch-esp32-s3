@@ -31,6 +31,17 @@ This repository distributes documentation and compiled firmware only. Download t
 
 Do not flash the application-only file at `0x0`. Neither file is a drag-and-drop UF2.
 
+## Flash from a web browser (Windows, macOS or Linux)
+
+No Python installation is needed. Use desktop Chrome or Edge and a USB data cable.
+
+1. Download **one `.bin` file** from the [release assets](https://github.com/flex36ty/civswitch-esp32-s3/releases/tag/v1.0.0). For a new board, choose the file ending in `-full.bin`.
+2. Plug the board's **COM** connector into the computer. Stop any local typing server or serial monitor using that port; closing its browser tab alone does not release the port.
+3. Open [Espressif's browser flasher](https://espressif.github.io/esptool-js/). In **Program**, connect and select the board's USB serial port. Leave **WebUSB (CH340)** unchecked for this board's COM connector.
+4. In the **Flash Address / File** row, select your downloaded file. Enter **`0x0` for `-full.bin`**, or **`0x10000` for `-app.bin`** on a board with the matching layout. Use only one row. Leave **Erase all** unchecked.
+5. Start programming and wait for the flasher to report successful verification. Disconnect from the flasher, then tap **RST** if the board has not restarted.
+6. Connect the native **USB** connector to the Switch dock and follow [Use without a computer](#use-without-a-computer). If the flasher cannot connect, see [Flash troubleshooting](#flash-troubleshooting).
+
 ## Flash from Windows PowerShell
 
 Install Python 3, download the full binary, and open PowerShell in its download folder. Close any typing server or serial monitor using the board. Connect **COM** to the PC.
