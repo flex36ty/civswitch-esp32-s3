@@ -1,6 +1,18 @@
 # CivSwitch ESP32-S3
 
-**Easy install for Windows, macOS and Linux:** download the [CivSwitch Flasher ZIP](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/CivSwitch-Flasher-v1.0.0.zip), extract it, and open `CivSwitch-Flasher.html` in desktop Chrome or Edge. Connect the board’s COM port and stop any serial controller using it. Choose **Full install** for a new board or **Update** for an existing matching CivSwitch installation, then click **Choose port & install**. Wait for verification before unplugging. The app includes both firmware images, works offline and selects the address automatically. Confirm your board is marked N16R8; the installer checks ESP32-S3 and 16 MB flash but cannot verify board wiring.
+## EZ Flasher
+
+**[Download the all-in-one EZ Flasher ZIP](https://github.com/flex36ty/civswitch-esp32-s3/releases/download/v1.0.0/CivSwitch-Flasher-v1.0.0.zip)** for Windows, macOS or Linux. Both firmware images and the optional controller are included.
+
+1. **Open the flasher.** Extract the ZIP, then open `CivSwitch-Flasher.html` in desktop Chrome or Edge.
+2. **Connect the board.** Check that it is an ESP32-S3 **N16R8**. Plug its **COM** connector into your computer with a USB data cable.
+3. **Release the port if needed.** If the CivSwitch controller is running, click **Free COM port**, confirm in the controller tab, then return to the flasher. If the controller is offline, skip this step. Close any serial monitor using the port.
+4. **Choose the installation.** Select **Full install** for a new board or one running other firmware. This overwrites all 16 MB of flash. Select **Update** for a board already using the CivSwitch N16R8 layout.
+5. **Flash.** Click **Choose port & install**, select the board’s serial port, and keep the cable connected until the flasher reports **Firmware verified**.
+
+![EZ Flasher ready to install, showing the Free COM port button, Installation menu, Choose port & install button and connection log](https://raw.githubusercontent.com/flex36ty/civswitch-esp32-s3/main/assets/ez-flasher.png)
+
+**If it cannot connect**, hold **BOOT**, tap **RST**, release **BOOT**, then retry. After verification, connect the board’s native **USB** connector to the Switch dock.
 
 An unofficial ESP32-S3 (port of [Gezine's CivSwitch](https://github.com/Gezine/CivSwitch) USB controller-and-keyboard automation. The firmware stores the 87-message CivSwitch session-loader payload and types it into Civilization VII's lobby chat. Once flashed, it can run from the board's BOOT button without a computer.
 
