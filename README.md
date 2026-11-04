@@ -1,6 +1,9 @@
 # CivSwitch ESP32-S3
 
-An unofficial ESP32-S3 port of [Gezine's CivSwitch](https://github.com/Gezine/CivSwitch) USB controller-and-keyboard automation. The firmware stores the 87-message CivSwitch session-loader payload and types it into Civilization VII's lobby chat. Once flashed, it can run from the board's BOOT button without a computer.
+An unofficial ESP32-S3 (port of [Gezine's CivSwitch](https://github.com/Gezine/CivSwitch) USB controller-and-keyboard automation. The firmware stores the 87-message CivSwitch session-loader payload and types it into Civilization VII's lobby chat. Once flashed, it can run from the board's BOOT button without a computer.
+
+Buy this board if you need to get one
+https://www.amazon.com/dp/B0F5QCK6X5?ref=ppx_yo2ov_dt_b_fed_asin_title
 
 This repository distributes documentation and compiled firmware only. Download the `.bin` files from [Releases](https://github.com/flex36ty/civswitch-esp32-s3/releases/latest). GitHub's automatically generated “Source code” archives contain repository documentation, not the firmware project.
 
